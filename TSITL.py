@@ -1,3 +1,7 @@
+# TSITL.py
+# This script will output a copy-and-paste leaderboard for the topic "The sky is the limit."
+# It also comes with the proper [color][/color] BBCode formatting.
+
 import requests
 from bs4 import BeautifulSoup
 from collections import Counter
