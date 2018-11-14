@@ -6,6 +6,15 @@ from pygame.locals import QUIT
 from collections import Counter
 
 # Get all rainbows from rbs.txt, which (for now) is updated manually.
+# An entry in rbs.txt is created in the following format:
+# RED HEX CODE
+# ORANGE HEX CODE
+# YELLOW HEX CODE
+# GREEN HEX CODE
+# BLUE HEX CODE
+# PURPLE HEX CODE
+# USER WHO FINISHED THE RAINBOW
+# If any of the fields are yet to be filled, add "--TBD--" without the quotes.
 with open('rbs.txt') as f:
     rainbows = f.read().splitlines()
 
