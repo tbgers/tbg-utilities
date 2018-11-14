@@ -694,7 +694,7 @@ SuperJedi224
 #bc1623
 #fb5f08
 #b4ba33
-N/A
-N/A
+#73b265
+#544fc3
 N/A
 N/A
