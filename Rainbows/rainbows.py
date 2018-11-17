@@ -56,7 +56,7 @@ finisher_font = pygame.font.SysFont("consolas", 30)
 color_font = pygame.font.SysFont("consolas", 60)
 
 
-def draw(r):
+def draw(r, draw_text):
     index = r
     r = get_rainbow(r)
 
@@ -69,24 +69,27 @@ def draw(r):
 
         rect = pygame.Rect(160 * i, 0, 160, 720)  # Draw the rectangles
         pygame.draw.rect(screen, color, rect, 0)
-
-        text = color_font.render(r[i], 1, comp)  # Draw the texts
-        rotated = pygame.transform.rotate(text, 90)
-        screen.blit(rotated, (50 + (160 * i), 240))
+        if draw_text:
+            text = color_font.render(r[i], 1, comp)  # Draw the texts
+            rotated = pygame.transform.rotate(text, 90)
+            screen.blit(rotated, (50 + (160 * i), 240))
 
     # Display who finished the rainbow
-    if r[-1] != "--TBD--":
-        finisher = finisher_font.render("Rainbow #" + str(index) +
-                                        ": Finished by " + r[-1], 1, (0, 0, 0))
-    else:
-        finisher = finisher_font.render("Rainbow #" + str(index) +
-                                        ": Unfinished", 1, (0, 0, 0))
-    screen.blit(finisher, (10, 10))
+    if draw_text:
+        if r[-1] != "--TBD--":
+            finisher = finisher_font.render("Rainbow #" + str(index) +
+                                            ": Finished by " + r[-1], 1,
+                                            (0, 0, 0))
+        else:
+            finisher = finisher_font.render("Rainbow #" + str(index) +
+                                            ": Unfinished", 1, (0, 0, 0))
+        screen.blit(finisher, (10, 10))
 
 
 # Draw first rainbow
 rainbow = 1
-draw(rainbow)
+dt = True
+draw(rainbow, dt)
 
 # Game loop
 running = True
@@ -107,5 +110,7 @@ while running:
                 rainbow = random.randint(1, len(r))
             if event.key == pygame.K_l:
                 generate_leaderboard()
-            draw(rainbow)
+            if event.key == pygame.K_t:
+                dt = not dt
+            draw(rainbow, dt)
     pygame.display.update()
