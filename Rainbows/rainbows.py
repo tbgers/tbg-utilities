@@ -18,15 +18,8 @@ from collections import Counter
 # USER WHO FINISHED THE RAINBOW
 # If any of the fields are yet to be filled, add "--TBD--" without the quotes.
 
-# Will automatically retrieve the rainbows from online, will use the text file
-# if offline.
-try:
-    with urllib.request.urlopen("https://git.io/fpnAn") as f:
-        rainbows = f.read().splitlines()
-    rainbows = [i.decode("utf-8") for i in rainbows]
-except urllib.error.URLError:
-    with open("rbs.txt") as f:
-        rainbows = f.read().splitlines()
+with open("rbs.txt") as f:
+    rainbows = f.read().splitlines()
 
 # Variables
 r, o, y, g, b, p, user = (rainbows[i::7] for i in range(7))
