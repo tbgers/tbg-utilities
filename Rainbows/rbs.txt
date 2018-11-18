@@ -713,9 +713,9 @@ seanbobe
 #a404b2
 SuperJedi224
 #fb5887
---TBD--
---TBD--
---TBD--
---TBD--
---TBD--
---TBD--
+#ffc526
+#ded82e
+#00FF00
+#0000ff
+#cf1ebd
+Alex The JPEG
