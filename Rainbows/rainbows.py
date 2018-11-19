@@ -2,7 +2,6 @@
 import pygame
 import pyperclip
 import random
-import urllib.request
 from pygame.locals import QUIT
 from collections import Counter
 
@@ -55,9 +54,10 @@ pygame.display.set_caption("TBG Rainbows")
 # Set fonts
 finisher_font = pygame.font.SysFont("consolas", 30)
 color_font = pygame.font.SysFont("consolas", 60)
+info_font = pygame.font.SysFont("consolas", 15)
 
 
-def draw(r, draw_text):
+def draw(r, draw_info, draw_hex):
     index = r
     r = get_rainbow(r)
 
@@ -70,13 +70,13 @@ def draw(r, draw_text):
 
         rect = pygame.Rect(160 * i, 0, 160, 720)  # Draw the rectangles
         pygame.draw.rect(screen, color, rect, 0)
-        if draw_text:
+        if draw_hex:
             text = color_font.render(r[i], 1, comp)  # Draw the texts
             rotated = pygame.transform.rotate(text, 90)
             screen.blit(rotated, (50 + (160 * i), 240))
 
     # Display who finished the rainbow
-    if draw_text:
+    if draw_info:
         if r[-1] != "--TBD--":
             finisher = finisher_font.render("Rainbow #" + str(index) +
                                             ": Finished by " + r[-1], 1,
@@ -86,11 +86,29 @@ def draw(r, draw_text):
                                             ": Unfinished", 1, (0, 0, 0))
         screen.blit(finisher, (10, 10))
 
+        lrarrows = info_font.render("Use the ↔ keys to go up/down a rainbow.",
+                                  1, (0, 0, 0))
+        udarrows = info_font.render("Use the ↕ keys to go up/down 10 rainbows.",
+                                    1, (0, 0, 0))
+        space = info_font.render("Use the spacebar to go to a random rainbow.",
+                                 1, (0, 0, 0))
+        press_t = info_font.render("Press T to toggle info text.", 1, (0, 0, 0))
+        press_h = info_font.render("Press H to toggle hex codes.", 1, (0, 0, 0))
+        press_l = info_font.render("Press L to copy leaderboard to clipboard.",
+                                   1, (0, 0, 0))
+        screen.blit(lrarrows, (10, 600))
+        screen.blit(udarrows, (10, 620))
+        screen.blit(space, (10, 640))
+        screen.blit(press_t, (10, 660))
+        screen.blit(press_h, (10, 680))
+        screen.blit(press_l, (10, 700))
+
 
 # Draw first rainbow
 rainbow = 1
 dt = True
-draw(rainbow, dt)
+dh = True
+draw(rainbow, dt, dh)
 
 # Game loop
 running = True
@@ -107,11 +125,23 @@ while running:
                 rainbow += 1
                 if rainbow > len(r):
                     rainbow = 1
+            if event.key == pygame.K_UP:
+                for i in range(10):
+                    rainbow += 1
+                    if rainbow > len(r):
+                        rainbow = 1
+            if event.key == pygame.K_DOWN:
+                for i in range(10):
+                    rainbow -= 1
+                    if rainbow < 1:
+                        rainbow = len(r)
             if event.key == pygame.K_SPACE:
                 rainbow = random.randint(1, len(r))
             if event.key == pygame.K_l:
                 generate_leaderboard()
             if event.key == pygame.K_t:
                 dt = not dt
-            draw(rainbow, dt)
+            if event.key == pygame.K_h:
+                dh = not dh
+            draw(rainbow, dt, dh)
     pygame.display.update()
