@@ -1,6 +1,7 @@
 # import modules
 import pygame  # to make a window to display the rainbows
-from pyperclip import copy  # to copy the leaderboard to the clipboard
+import randomcolor   # to make random colors
+from pyperclip import copy  # to copy information to the clipboard
 from random import randint  # to select a random rainbow
 from pygame.locals import QUIT  # to handle clicking the 'X' on the window
 from collections import Counter  # for use in the leaderboard script
@@ -108,14 +109,17 @@ def draw(r, draw_info, draw_hex):
         press_h = info_font.render("Press H to toggle hex codes.", 1, (0, 0, 0))
         press_l = info_font.render("Press L to copy leaderboard to clipboard.",
                                    1, (0, 0, 0))
+        colors = "Press ROYGBVP to copy random hex code for red, orange, etc."
+        make_colors = info_font.render(colors, 1, (0, 0, 0))
 
         # Display info text
-        screen.blit(lrarrows, (10, 600))
-        screen.blit(udarrows, (10, 620))
-        screen.blit(space, (10, 640))
-        screen.blit(press_t, (10, 660))
-        screen.blit(press_h, (10, 680))
-        screen.blit(press_l, (10, 700))
+        screen.blit(lrarrows, (10, 580))
+        screen.blit(udarrows, (10, 600))
+        screen.blit(space, (10, 620))
+        screen.blit(press_t, (10, 640))
+        screen.blit(press_h, (10, 660))
+        screen.blit(press_l, (10, 680))
+        screen.blit(make_colors, (10, 700))
 
 
 # Draw first rainbow
@@ -123,6 +127,9 @@ rainbow = 1
 dt = True
 dh = True
 draw(rainbow, dt, dh)
+
+# Random color generator
+randcolor = randomcolor.RandomColor()
 
 # Game loop
 running = True
@@ -166,5 +173,35 @@ while running:
             if event.key == pygame.K_h:
                 # Toggle hex codes
                 dh = not dh
+            if event.key == pygame.K_r:  # Generate random shade of red
+                hex_code = randcolor.generate(hue="red")[0]
+                copy(hex_code)
+                print("Red hex code copied to clipboard:")
+                print(hex_code)
+            if event.key == pygame.K_o:  # Generate random shade of orange
+                hex_code = randcolor.generate(hue="orange")[0]
+                copy(hex_code)
+                print("Orange hex code copied to clipboard:")
+                print(hex_code)
+            if event.key == pygame.K_y:  # Generate random shade of yellow
+                hex_code = randcolor.generate(hue="yellow")[0]
+                copy(hex_code)
+                print("Yellow hex code copied to clipboard:")
+                print(hex_code)
+            if event.key == pygame.K_g:  # Generate random shade of green
+                hex_code = randcolor.generate(hue="green")[0]
+                copy(hex_code)
+                print("Green hex code copied to clipboard:")
+                print(hex_code)
+            if event.key == pygame.K_b:  # Generate random shade of blue
+                hex_code = randcolor.generate(hue="blue")[0]
+                copy(hex_code)
+                print("Blue hex code copied to clipboard:")
+                print(hex_code)
+            if event.key == pygame.K_p:  # Generate random shade of purple
+                hex_code = randcolor.generate(hue="purple")[0]
+                copy(hex_code)
+                print("Purple hex code copied to clipboard:")
+                print(hex_code)
             draw(rainbow, dt, dh)  # Draw rainbow
     pygame.display.update()  # Update screen
