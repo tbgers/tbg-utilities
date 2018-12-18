@@ -14,7 +14,7 @@ from collections import Counter  # for use in the leaderboard script
 # BLUE HEX CODE
 # PURPLE HEX CODE
 # USER WHO FINISHED THE RAINBOW
-# If any of the fields are yet to be filled, add "--TBD--" without the quotes.
+# If any of the fields are yet to be filled, add "-------" without the quotes.
 
 with open("rbs.txt") as f:
     # Get all rainbows from rbs.txt, which (for now) is updated manually.
@@ -27,7 +27,8 @@ r, o, y, g, b, p, user = (rainbows[i::7] for i in range(7))
 def get_rainbow(i):
     # Returns a rainbow tuple from the seven lists.
     # Array starts at 1 like a boss
-    return (r[i - 1], o[i - 1], y[i - 1], g[i - 1], b[i - 1], p[i - 1],
+    return (r[i - 1].lower(), o[i - 1].lower(), y[i - 1].lower(),
+            g[i - 1].lower(), b[i - 1].lower(), p[i - 1].lower(),
             user[i - 1])
 
 
@@ -36,7 +37,7 @@ def generate_leaderboard():
     # Finds every use that finished a rainbow, sorts them by number of
     # occurrences, and generates a leaderboard with 1st, 2nd, and 3rd place
     # properly colored with BBCode.
-    u = [i for i in user if i != "--TBD--"]
+    u = [i for i in user if i != "-------"]
     data = dict(Counter(u))
     post = []
     for k, v in sorted(data.items(), key=lambda p: p[1], reverse=True):
@@ -70,7 +71,7 @@ def draw(r, draw_info, draw_hex):
     for i in range(6):
         # The rectangles display the color themselves.
         # The texts display the hex codes of the colors.
-        hex = (r[i].lstrip("#") if r[i] != "--TBD--" else "000000")
+        hex = (r[i].lstrip("#") if r[i] != "-------" else "ffffff")
         color = tuple(int(hex[rgb:rgb + 2], 16) for rgb in (0, 2, 4))
         comp = tuple([255 - c for c in color])
 
@@ -88,7 +89,7 @@ def draw(r, draw_info, draw_hex):
         # Render finisher text
         # Finisher text displays the rainbow number and who finished the
         # rainbow.
-        if r[-1] != "--TBD--":
+        if r[-1] != "-------":
             finisher = finisher_font.render("Rainbow #" + str(index) +
                                             ": Finished by " + r[-1], 1,
                                             (0, 0, 0))
