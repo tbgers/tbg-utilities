@@ -12,7 +12,11 @@ The rainbows list is automatically scraped from the topic using Scrapy. If you w
 
 ## Upcoming topics
 The sky is the limit. (https://tbgforums.com/forums/viewtopic.php?id=170)
+
 First (http://tbgforums.com/forums/viewtopic.php?id=4902)
+
 Hold the last post for as long as possible (http://tbgforums.com/forums/viewtopic.php?id=5145)
+
 Thread Necromancy Game (http://tbgforums.com/forums/viewtopic.php?id=2111)
+
 Add / Remove / Change A Letter (http://tbgforums.com/forums/viewtopic.php?id=2670)
