@@ -9,6 +9,9 @@ verify_ssl = true
 pytz = "*"
 scrapy = "*"
 webcolors = "*"
+pygame = "*"
+randomcolor = "*"
+pyperclip = "*"
 
 [requires]
 python_version = "3.7"
