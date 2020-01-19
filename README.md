@@ -3,13 +3,15 @@ Some utilities for the Text Based Games Forums (http://tbgforums.com/forums)
 
 They are mostly for updating leaderboards, maybe posting content every now and then, etc. If you would like to contribute by making a utility of your own, feel free to do so. Any language is acceptable, but Python is preferred. You can also choose to fix bugs or make utilities more efficient.
 
-## TSITL.py
-A tool to update "The sky is the limit.", where the score is simply based on how many posts you have on that topic. Automatically generates the leaderboard and applies BBCode for easy copying and pasting.
+## Rainbows (script: `rainbows/rainbows.py`)
+Display all the rainbows from the Rainbows topic (https://tbgforums.com/forums/viewtopic.php?id=2956).
 
-## Rainbows
-Display all the rainbows from the Rainbows topic. The rainbows list (for now) is updated manually by me.
+The rainbows list is automatically scraped from the topic using Scrapy. If you want to update the list, you can delete the `rainbows.json` file before running the script.
+
+---
 
 ## Upcoming topics
+The sky is the limit. (https://tbgforums.com/forums/viewtopic.php?id=170)
 First (http://tbgforums.com/forums/viewtopic.php?id=4902)
 Hold the last post for as long as possible (http://tbgforums.com/forums/viewtopic.php?id=5145)
 Thread Necromancy Game (http://tbgforums.com/forums/viewtopic.php?id=2111)
