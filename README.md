@@ -6,7 +6,7 @@ They are mostly for updating leaderboards, maybe posting content every now and t
 ## Rainbows (script: `rainbows/rainbows.py`)
 Display all the rainbows from the Rainbows topic (https://tbgforums.com/forums/viewtopic.php?id=2956).
 
-The rainbows list is automatically scraped from the topic using Scrapy. If you want to update the list, you can delete the `rainbows.json` file before running the script.
+The rainbows list is automatically scraped from the topic using Scrapy. When the script is run for the first time, it will get posts from the topic and update the rainbows. The rainbow data is stored in `rainbows.json`. For now, to manually update the list, simply delete the `rainbows.json` file.
 
 ---
 
