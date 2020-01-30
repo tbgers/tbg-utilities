@@ -37,7 +37,8 @@ class RainbowsPipeline(object):
                             "p460826",
                             "p460894",
                             "p462858",
-                            "p474985"]
+                            "p474985",
+                            "p489996"]
 
         # All posts that post the wrong color
         wrong_color_ids = {"p256373": "#24becb",
