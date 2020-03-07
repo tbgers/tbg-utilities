@@ -1,6 +1,6 @@
 # import modules
 import pygame  # to make a window to display the rainbows
-import randomcolor   # to make random colors
+import randomcolor  # to make random colors
 from pyperclip import copy  # to copy information to the clipboard
 from random import randint  # to select a random rainbow
 from pygame.locals import QUIT  # to handle clicking the 'X' on the window
@@ -13,13 +13,13 @@ from scrapy.crawler import CrawlerProcess
 from rainbows.spiders.rainbow_spider import RainbowSpider
 
 if "rainbows.json" not in os.listdir(os.getcwd()):
-    process = CrawlerProcess(settings={
-        'FEED_FORMAT': 'json',
-        'FEED_URI': 'rainbows.json',
-        "ITEM_PIPELINES": {
-            "rainbows.pipelines.RainbowsPipeline": 300
+    process = CrawlerProcess(
+        settings={
+            "FEED_FORMAT": "json",
+            "FEED_URI": "rainbows.json",
+            "ITEM_PIPELINES": {"rainbows.pipelines.RainbowsPipeline": 300},
         }
-    })
+    )
 
     process.crawl(RainbowSpider)
     process.start()
@@ -42,7 +42,14 @@ red, orange, yellow, green, blue, purple = (rainbows[i::6] for i in range(6))
 def get_rainbow(i):
     # Returns a rainbow tuple from the six lists.
     # Array starts at 1 like a boss
-    return (red[i - 1], orange[i - 1], yellow[i - 1], green[i - 1], blue[i - 1], purple[i - 1])
+    return (
+        red[i - 1],
+        orange[i - 1],
+        yellow[i - 1],
+        green[i - 1],
+        blue[i - 1],
+        purple[i - 1],
+    )
 
 
 def generate_leaderboard():
@@ -57,7 +64,7 @@ def generate_leaderboard():
     post[0] = "[color=#d6a523]" + post[0] + "[/color]"  # Gold
     post[1] = "[color=#a19e9e]" + post[1] + "[/color]"  # Silver
     post[2] = "[color=#cd7f32]" + post[2] + "[/color]"  # Bronze
-    copy('\n'.join(post))  # Copy to clipboard
+    copy("\n".join(post))  # Copy to clipboard
     # Print into console that the operation was successful.
     print("Leaderboard copied to clipboard.")
 
@@ -83,8 +90,8 @@ def draw(r, draw_info, draw_hex):
     for i in range(6):
         # The rectangles display the color themselves.
         # The texts display the hex codes of the colors.
-        hex_ = (r[i]["color"].lstrip("#") if r[i]["color"] != "-------" else "ffffff")
-        color = tuple(int(hex_[rgb:rgb + 2], 16) for rgb in (0, 2, 4))
+        hex_ = r[i]["color"].lstrip("#") if r[i]["color"] != "-------" else "ffffff"
+        color = tuple(int(hex_[rgb : rgb + 2], 16) for rgb in (0, 2, 4))
         comp = tuple([255 - c for c in color])
 
         # Draw and color the rectangle
@@ -103,7 +110,9 @@ def draw(r, draw_info, draw_hex):
         # rainbow.
         rainbow_number = finisher_font.render(f"Rainbow #{str(index)}", 1, (0, 0, 0))
         if r[-1]["author"] != "-------":
-            finisher = finisher_font.render(f"Finished by {r[-1]['author']}", 1, (0, 0, 0))
+            finisher = finisher_font.render(
+                f"Finished by {r[-1]['author']}", 1, (0, 0, 0)
+            )
         else:
             finisher = finisher_font.render("Unfinished", 1, (0, 0, 0))
 
@@ -112,13 +121,23 @@ def draw(r, draw_info, draw_hex):
         screen.blit(finisher, (10, 40))
 
         # Render info text
-        lrarrows = info_font.render("Use the ↔ keys to go up/down a rainbow.", 1, (0, 0, 0))
-        udarrows = info_font.render("Use the ↕ keys to go up/down 10 rainbows.", 1, (0, 0, 0))
-        space = info_font.render("Use the spacebar to go to a random rainbow.", 1, (0, 0, 0))
+        lrarrows = info_font.render(
+            "Use the ↔ keys to go up/down a rainbow.", 1, (0, 0, 0)
+        )
+        udarrows = info_font.render(
+            "Use the ↕ keys to go up/down 10 rainbows.", 1, (0, 0, 0)
+        )
+        space = info_font.render(
+            "Use the spacebar to go to a random rainbow.", 1, (0, 0, 0)
+        )
         press_t = info_font.render("Press T to toggle info text.", 1, (0, 0, 0))
         press_h = info_font.render("Press H to toggle hex codes.", 1, (0, 0, 0))
-        press_l = info_font.render("Press L to copy leaderboard to clipboard.", 1, (0, 0, 0))
-        make_colors = info_font.render("Press ROYGBP to copy random hex code for red, orange, etc.", 1, (0, 0, 0))
+        press_l = info_font.render(
+            "Press L to copy leaderboard to clipboard.", 1, (0, 0, 0)
+        )
+        make_colors = info_font.render(
+            "Press ROYGBP to copy random hex code for red, orange, etc.", 1, (0, 0, 0)
+        )
 
         # Display info text
         screen.blit(lrarrows, (10, 580))

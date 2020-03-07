@@ -5,9 +5,7 @@ from rainbows.items import RainbowPost
 
 class RainbowSpider(scrapy.Spider):
     name = "rainbows"
-    start_urls = [
-        "https://tbgforums.com/forums/viewtopic.php?id=2956"
-    ]
+    start_urls = ["https://tbgforums.com/forums/viewtopic.php?id=2956"]
 
     def parse(self, response):
         for post in response.css(".blockpost"):

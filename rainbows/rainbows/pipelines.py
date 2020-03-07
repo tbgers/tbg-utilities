@@ -36,7 +36,12 @@ class RainbowsPipeline(object):
             item["color"] = multiple_colors_ids[item["post_id"]]
         else:
             # Get the color that the user posted
-            item["color"] = item["color"].css("div[class='postmsg'] span::attr(style)")[0].get().lower()
+            item["color"] = (
+                item["color"]
+                .css("div[class='postmsg'] span::attr(style)")[0]
+                .get()
+                .lower()
+            )
             item["color"] = item["color"].replace("color: ", "")
             if not item["color"].startswith("#"):
                 item["color"] = name_to_hex(item["color"])
