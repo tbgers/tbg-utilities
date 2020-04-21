@@ -12,6 +12,7 @@ webcolors = "*"
 pygame = "*"
 randomcolor = "*"
 pyperclip = "*"
+twisted = "==20.3.0"
 
 [requires]
 python_version = "3.8"
