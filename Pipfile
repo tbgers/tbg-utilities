@@ -4,6 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+flake8 = "*"
+flake8-import-order = "*"
+flake8-bugbear = "*"
+flake8-bandit = "*"
+flake8-black = "*"
+black = "*"
+isort = "*"
 
 [packages]
 pytz = "*"
@@ -12,7 +19,12 @@ webcolors = "*"
 pygame = "*"
 randomcolor = "*"
 pyperclip = "*"
-twisted = "==20.3.0"
+twisted = "*"
+requests = "*"
+bs4 = "*"
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
