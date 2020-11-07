@@ -34,6 +34,7 @@ Things to consider:
 Print the leaderboard for The sky is the limit. (https://tbgforums.com/forums/viewtopic.php?id=170)
 
 One of the simpler scripts, because it simply counts the number of times someone posts on the topic. It also auto-formats the leaderboard with 1st, 2nd, and 3rd place having gold, silver, and bronze coloring, respectively.
+
 ---
 
 ## Upcoming topics
