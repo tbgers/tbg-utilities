@@ -13,16 +13,20 @@ Print the leaderboard for First (http://tbgforums.com/forums/viewtopic.php?id=49
 
 The score is based on the first person to post on a specific day. Users get more points if they are the first to post in a week, month, year, etc.
 
-The following is the point chart for being first to post in a...
-day = 1 point
-week = 5 points
-month = 20 points
-year = 200 points
-decade = 2000 points
-century = 20000 points
-millennium = 200000 points
-megaannum = 2000000 points
-gigaannum = 20000000 points
+The following is the point chart for being first to post:
+
+| Being the first of the... | ...will get you |
+| ------------------------- | --------------- |
+| day | 1 point |
+| week | 5 points |
+| month | 20 points |
+| year | 200 points |
+| decade | 2000 points |
+| century | 20000 points |
+| millennium | 200000 points |
+| megaannum | 2000000 points | |
+| gigaannum | 20000000 points |
+
 ...and so on. But realistically we will never reach past "decade," so the script only goes up to a decade.
 
 Things to consider:
