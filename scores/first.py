@@ -40,15 +40,19 @@ for i in range(pages):
     # Uncomment the line below if you want to view the progress.
     print("Finished page %s" % str(i + 1))
 
+# Make sure that each post has a time and a user
 assert len(times) == len(users)
 
+# Get each time and convert it into CST.
 times = [list(i) for i in times]
 for i in range(len(times)):
     if times[i][0] == "Today":
+        # Today is...today
         today = datetime.now(old_tz).strftime("%Y %b %d").split()
         for j in range(len(today)):
             times[i][j + 2] = today[j]
     elif times[i][0] == "Yesterday":
+        # Yesterday is one day ago.
         time_diff = datetime.now(old_tz) - timedelta(1)
         yesterday = time_diff.strftime("%Y %b %d").split()
         for j in range(len(yesterday)):
@@ -58,6 +62,7 @@ for i in range(len(times)):
     aedt_to_cst = dt_obj - timedelta(hours=17)
     times[i] = aedt_to_cst
 
+# Ignore all posts on the day of the game's creation
 del users[:4]
 del times[:4]
 
@@ -82,8 +87,8 @@ for i in range(len(times)):
 assert len(points) == len(winners)
 
 zeroes = [0 for i in points]
-# This conveniently removes duplicate users, so yay!
-data = dict(zip(winners, zeroes))
+# Remove duplicate users
+data = list(dict.fromkeys(winners))
 
 for i in range(len(points)):
     data[winners[i]] += points[i]
