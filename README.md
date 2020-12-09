@@ -45,6 +45,7 @@ Print the leaderboard for Hold the last post for as long as possible (http://tbg
 Described as a "reverse Thread Necomancy game," the scores is based on the time difference between a users's post and the next user's post. The larger the difference, the more time is awarded to the first user.
 
 This script will grab all the times of each post and calculate the time differences automatically. It will also create a leaderboard with proper BBCode and time formatting as well as show how much time the last poster can potentially gain.
+
 ---
 
 ## Upcoming topics
