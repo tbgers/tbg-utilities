@@ -15,7 +15,7 @@ The score is based on the first person to post on a specific day. Users get more
 
 The following is the point chart for being first to post:
 
-| Being the first of the... | ...will get you |
+| Being the first of the... | ...is worth |
 | ------------------------- | --------------- |
 | day | 1 point |
 | week | 5 points |
@@ -39,11 +39,15 @@ Print the leaderboard for The sky is the limit. (https://tbgforums.com/forums/vi
 
 One of the simpler scripts, because it simply counts the number of times someone posts on the topic. It also auto-formats the leaderboard with 1st, 2nd, and 3rd place having gold, silver, and bronze coloring, respectively.
 
+## Hold the last post for as long as possible (script: `scores/htlpfalap.py`)
+Print the leaderboard for Hold the last post for as long as possible (http://tbgforums.com/forums/viewtopic.php?id=5145)
+
+Described as a "reverse Thread Necomancy game," the scores is based on the time difference between a users's post and the next user's post. The larger the difference, the more time is awarded to the first user.
+
+This script will grab all the times of each post and calculate the time differences automatically. It will also create a leaderboard with proper BBCode and time formatting as well as show how much time the last poster can potentially gain.
 ---
 
 ## Upcoming topics
-
-Hold the last post for as long as possible (http://tbgforums.com/forums/viewtopic.php?id=5145)
 
 Thread Necromancy Game (http://tbgforums.com/forums/viewtopic.php?id=2111)
 
